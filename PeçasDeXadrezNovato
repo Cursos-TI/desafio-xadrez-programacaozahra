@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+int main() {
+    // Definindo o número de casas a serem movidas (conforme requisitos)
+    const int TORRE_CASAS = 5;    // Torre: 5 casas para direita
+    const int BISPO_CASAS = 5;    // Bispo: 5 casas na diagonal
+    const int RAINHA_CASAS = 8;   // Rainha: 8 casas para esquerda
+    
+    printf("=== SIMULAÇÃO DE MOVIMENTOS DE XADREZ - NÍVEL NOVATO ===\n\n");
+    
+    // MOVIMENTO DA TORRE - usando estrutura FOR
+    printf("Movimento da Torre (%d casas para a direita):\n", TORRE_CASAS);
+    // Loop for: ideal quando sabemos o número exato de iterações
+    for (int casa_atual = 0; casa_atual < TORRE_CASAS; casa_atual++) {
+        printf("Direita\n");
+    }
+    printf("\n");
+    
+    // MOVIMENTO DO BISPO - usando estrutura WHILE
+    printf("Movimento do Bispo (%d casas na diagonal superior direita):\n", BISPO_CASAS);
+    int contador_bispo = 0;
+    // Loop while: executa enquanto condição for verdadeira
+    while (contador_bispo < BISPO_CASAS) {
+        printf("Cima, Direita\n");  // Movimento na diagonal
+        contador_bispo++;
+    }
+    printf("\n");
+    
+    // MOVIMENTO DA RAINHA - usando estrutura DO-WHILE
+    printf("Movimento da Rainha (%d casas para a esquerda):\n", RAINHA_CASAS);
+    int contador_rainha = 0;
+    // Loop do-while: executa pelo menos uma vez antes de verificar condição
+    do {
+        printf("Esquerda\n");
+        contador_rainha++;
+    } while (contador_rainha < RAINHA_CASAS);
+    
+    printf("\n=== FIM DO NÍVEL NOVATO ===\n");
+    
+    return 0;
+}
