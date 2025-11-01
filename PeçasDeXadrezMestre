@@ -1,0 +1,131 @@
+#include <stdio.h>
+
+// ==========================
+// NÍVEL MESTRE - IMPLEMENTAÇÕES AVANÇADAS
+// ==========================
+
+// 1. RECURSIVIDADE para Torre - substitui o loop for original
+void moverTorreRecursivo(int casas) {
+    // CASO BASE: condição de parada da recursão
+    if (casas <= 0) {
+        return;  // Para a recursão quando não há mais casas
+    }
+    
+    // AÇÃO: executa o movimento atual
+    printf("Direita\n");
+    
+    // CHAMADA RECURSIVA: move para a próxima casa
+    // Reduz o número de casas restantes em 1
+    moverTorreRecursivo(casas - 1);
+}
+
+// 2. RECURSIVIDADE para Bispo - substitui o loop while original
+void moverBispoRecursivo(int casas) {
+    // CASO BASE
+    if (casas <= 0) {
+        return;
+    }
+    
+    // AÇÃO: movimento diagonal
+    printf("Cima, Direita\n");
+    
+    // CHAMADA RECURSIVA
+    moverBispoRecursivo(casas - 1);
+}
+
+// 3. RECURSIVIDADE para Rainha - substitui o loop do-while original
+void moverRainhaRecursivo(int casas) {
+    // CASO BASE
+    if (casas <= 0) {
+        return;
+    }
+    
+    // AÇÃO: movimento horizontal
+    printf("Esquerda\n");
+    
+    // CHAMADA RECURSIVA
+    moverRainhaRecursivo(casas - 1);
+}
+
+// 4. Bispo com LOOPS ANINHADOS - implementação alternativa
+void moverBispoAninhado(int casas) {
+    printf("Movimento do Bispo com loops aninhados (%d casas na diagonal):\n", casas);
+    
+    // LOOP EXTERNO: controla movimento vertical (conforme requisito)
+    for (int movimento_vertical = 0; movimento_vertical < casas; movimento_vertical++) {
+        // LOOP INTERNO: controla movimento horizontal (conforme requisito)
+        for (int movimento_horizontal = 0; movimento_horizontal < 1; movimento_horizontal++) {
+            printf("Cima, Direita\n");  // Combinação dos movimentos
+        }
+    }
+    printf("\n");
+}
+
+// 5. Cavalo com LOOPS COMPLEXOS - movimento: 2 cima + 1 direita
+void moverCavaloComplexo() {
+    printf("Movimento do Cavalo com loops complexos (2 casas para cima, 1 para a direita):\n");
+    
+    // MÚLTIPLAS VARIÁVEIS no loop for
+    for (int cima = 0, direita = 0; cima < 2 || direita < 1; ) {
+        
+        // CONDIÇÕES MÚLTIPLAS para controle preciso
+        if (cima < 2) {
+            printf("Cima\n");
+            cima++;
+            
+            // USO DO CONTINUTE: pula para próxima iteração se necessário
+            if (cima == 1) {
+                // Simula uma condição onde pulamos alguma lógica adicional
+                continue;
+            }
+        }
+        else if (direita < 1) {
+            printf("Direita\n");
+            direita++;
+            
+            // USO DO BREAK: sai do loop quando movimento completo
+            break;
+        }
+    }
+    printf("\n");
+}
+
+// ==========================
+// FUNÇÃO PRINCIPAL
+// ==========================
+
+int main() {
+    // Definindo número de casas (conforme requisitos)
+    const int TORRE_CASAS = 5;
+    const int BISPO_CASAS = 5;
+    const int RAINHA_CASAS = 8;
+    
+    printf("=== SIMULAÇÃO DE MOVIMENTOS DE XADREZ - NÍVEL MESTRE ===\n\n");
+    
+    // TORRE COM RECURSIVIDADE
+    printf("1. Torre com Recursividade (%d casas para direita):\n", TORRE_CASAS);
+    moverTorreRecursivo(TORRE_CASAS);
+    printf("\n");
+    
+    // BISPO COM RECURSIVIDADE
+    printf("2. Bispo com Recursividade (%d casas na diagonal):\n", BISPO_CASAS);
+    moverBispoRecursivo(BISPO_CASAS);
+    printf("\n");
+    
+    // RAINHA COM RECURSIVIDADE  
+    printf("3. Rainha com Recursividade (%d casas para esquerda):\n", RAINHA_CASAS);
+    moverRainhaRecursivo(RAINHA_CASAS);
+    printf("\n");
+    
+    // BISPO COM LOOPS ANINHADOS
+    printf("4. Bispo com Loops Aninhados:\n");
+    moverBispoAninhado(BISPO_CASAS);
+    
+    // CAVALO COM LOOPS COMPLEXOS
+    printf("5. Cavalo com Loops Complexos:\n");
+    moverCavaloComplexo();
+    
+    printf("=== FIM DO NÍVEL MESTRE ===\n");
+    
+    return 0;
+}
