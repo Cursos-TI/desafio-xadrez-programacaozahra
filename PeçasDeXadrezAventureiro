@@ -1,0 +1,76 @@
+#include <stdio.h>
+
+// Funções do nível Novato (já implementadas)
+void moverTorre(int casas) {
+    printf("Movimento da Torre (%d casas para a direita):\n", casas);
+    for (int i = 0; i < casas; i++) {
+        printf("Direita\n");
+    }
+    printf("\n");
+}
+
+void moverBispo(int casas) {
+    printf("Movimento do Bispo (%d casas na diagonal superior direita):\n", casas);
+    int contador = 0;
+    while (contador < casas) {
+        printf("Cima, Direita\n");
+        contador++;
+    }
+    printf("\n");
+}
+
+void moverRainha(int casas) {
+    printf("Movimento da Rainha (%d casas para a esquerda):\n", casas);
+    int contador = 0;
+    do {
+        printf("Esquerda\n");
+        contador++;
+    } while (contador < casas);
+    printf("\n");
+}
+
+// NOVO: Movimento do Cavalo com loops aninhados
+void moverCavalo() {
+    printf("Movimento do Cavalo (2 casas para baixo, 1 para a esquerda):\n");
+    
+    // Loop externo FOR (obrigatório)
+    for (int movimento_completo = 0; movimento_completo < 1; movimento_completo++) {
+        
+        // Primeiro loop interno WHILE - 2 casas para baixo
+        int casas_baixo = 0;
+        while (casas_baixo < 2) {
+            printf("Baixo\n");
+            casas_baixo++;
+        }
+        
+        // Segundo loop interno WHILE - 1 casa para esquerda
+        int casas_esquerda = 0;
+        while (casas_esquerda < 1) {
+            printf("Esquerda\n");
+            casas_esquerda++;
+        }
+    }
+    printf("\n");
+}
+
+int main() {
+    int casas = 5;
+    
+    printf("=== SIMULAÇÃO DE MOVIMENTOS DE XADREZ ===\n");
+    printf("=== NÍVEIS NOVATO E AVENTUREIRO ===\n\n");
+    
+    // Movimentos do nível Novato
+    moverTorre(casas);
+    moverBispo(casas);
+    moverRainha(casas);
+    
+    // Separar com linha em branco
+    printf("----------------------------------------\n\n");
+    
+    // NOVO: Movimento do Cavalo (nível Aventureiro)
+    moverCavalo();
+    
+    printf("=== FIM DOS NÍVEIS NOVATO E AVENTUREIRO ===\n");
+    
+    return 0;
+}
